@@ -1,0 +1,44 @@
+<nav style="
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+">
+  <button routerLink="/template" style="
+      padding: 12px 30px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #4a69bd, #1e3799);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(30, 55, 153, 0.4);
+      transition: transform 0.2s;
+  " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    Template Form
+  </button>
+
+  <button routerLink="/reactive" style="
+      padding: 12px 30px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #000;
+      background: #00ff88;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+      transition: transform 0.2s;
+  " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    Reactive Form
+  </button>
+</nav>
+
+<router-outlet></router-outlet>

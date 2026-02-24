@@ -1,0 +1,86 @@
+<div class="form-wrapper">
+  <div class="form-card">
+    <h2>{{ title }}</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+
+      <div class="field-group">
+        <label>System Username</label>
+        <input type="text" formControlName="username" class="input-box"
+               [class.is-invalid]="isInvalid('username')">
+        <small class="error-note" *ngIf="isInvalid('username')">Required Field</small>
+      </div>
+
+      <div class="field-group">
+        <label>Access Email</label>
+        <input type="email" formControlName="email" class="input-box"
+               [class.is-invalid]="isInvalid('email')">
+        <small class="error-note" *ngIf="isInvalid('email')">Invalid Email Format</small>
+      </div>
+
+      <div class="field-group">
+        <label>Security Password</label>
+        <input type="password" formControlName="password" class="input-box"
+               [class.is-invalid]="isInvalid('password')">
+        <small class="error-note" *ngIf="isInvalid('password')">Min 6 characters required</small>
+      </div>
+
+      <div class="field-group">
+        <label>Assigned Role</label>
+        <select formControlName="role" class="input-box" [class.is-invalid]="isInvalid('role')">
+          <option value="" disabled selected>Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+          <option value="Guest">Guest</option>
+        </select>
+        <small class="error-note" *ngIf="isInvalid('role')">Role is required</small>
+      </div>
+
+      <div class="field-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label style="color: white; text-transform: none; display: inline-flex; align-items: center; gap: 5px;">
+            <input type="radio" formControlName="gender" value="Male"> Male
+          </label>
+          <label style="color: white; text-transform: none; display: inline-flex; align-items: center; gap: 5px;">
+            <input type="radio" formControlName="gender" value="Female"> Female
+          </label>
+        </div>
+        <small class="error-note" *ngIf="isInvalid('gender')">Please select a gender</small>
+      </div>
+
+      <div class="field-group">
+        <label>Employment Status</label>
+        <select formControlName="status" class="input-box" [class.is-invalid]="isInvalid('status')">
+          <option value="" disabled selected>Select Status</option>
+          <option value="Permanent">Permanent</option>
+          <option value="Probationary">Probationary</option>
+        </select>
+        <small class="error-note" *ngIf="isInvalid('status')">Status is required</small>
+      </div>
+
+      <div class="field-group">
+        <label>System Notes</label>
+        <textarea formControlName="comments" class="input-box" placeholder="Optional notes..." rows="2"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">
+        Execute Submit
+      </button>
+
+      <p style="color: #555; font-size: 10px; margin-top: 10px;" *ngIf="loginForm.invalid">
+        Form Status: INVALID (Check missing fields)
+      </p>
+    </form>
+
+    <div class="summary-box" *ngIf="submitted">
+      <h3>Access Granted</h3>
+      <div class="summary-item"><strong>User:</strong> {{ loginForm.value.username }}</div>
+      <div class="summary-item"><strong>Email:</strong> {{ loginForm.value.email }}</div>
+      <div class="summary-item"><strong>Role:</strong> {{ loginForm.value.role }}</div>
+      <div class="summary-item"><strong>Gender:</strong> {{ loginForm.value.gender }}</div>
+      <div class="summary-item"><strong>Status:</strong> {{ loginForm.value.status }}</div>
+      <button class="submit-btn" style="margin-top:15px;" (click)="submitted = false">Return</button>
+    </div>
+  </div>
+</div>

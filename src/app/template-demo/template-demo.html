@@ -1,0 +1,77 @@
+<div class="form-wrapper">
+  <div class="form-card">
+    <h2>{{ title }}</h2>
+
+    <form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="!submitted">
+
+      <div class="field-group">
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="username" #u="ngModel"
+               placeholder="Enter username" required class="input-box"
+               [class.is-invalid]="u.invalid && u.touched">
+        <small class="error-note" *ngIf="u.invalid && u.touched">
+          ⚠️ Username is required to continue.
+        </small>
+      </div>
+
+      <div class="field-group">
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="email" #e="ngModel"
+               placeholder="Enter email" required email class="input-box"
+               [class.is-invalid]="e.invalid && e.touched">
+        <small class="error-note" *ngIf="e.invalid && e.touched">
+          ⚠️ Please enter a valid email address.
+        </small>
+      </div>
+
+      <div class="field-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" #p="ngModel"
+               placeholder="Enter password" required minlength="6" class="input-box"
+               [class.is-invalid]="p.invalid && p.touched">
+        <small class="error-note" *ngIf="p.invalid && p.touched">
+          ⚠️ Password must be at least 6 characters long.
+        </small>
+      </div>
+
+      <div class="field-group">
+        <label>Role</label>
+        <select name="role" [(ngModel)]="role" #r="ngModel" required class="input-box"
+                [class.is-invalid]="r.invalid && r.touched">
+          <option value="" disabled selected>Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+        </select>
+        <small class="error-note" *ngIf="r.invalid && r.touched">⚠️ Please select a role.</small>
+      </div>
+
+      <div class="radio-group">
+        <label>Gender:</label>
+        <input type="radio" name="gender" [(ngModel)]="gender" value="Male" required> Male
+        <input type="radio" name="gender" [(ngModel)]="gender" value="Female"> Female
+      </div>
+
+      <div class="field-group">
+        <select name="status" [(ngModel)]="status" required class="input-box">
+          <option value="" disabled selected>Employment Status</option>
+          <option value="Permanent">Permanent</option>
+          <option value="Probationary">Probationary</option>
+        </select>
+      </div>
+
+      <textarea name="comments" [(ngModel)]="comments" placeholder="Additional Notes..." class="input-box" rows="2"></textarea>
+
+      <button type="submit" class="submit-btn" [disabled]="!myForm.valid">Submit Form</button>
+    </form>
+
+    <div class="summary-box" *ngIf="submitted">
+      <h3>Submission Summary</h3>
+      <div class="summary-item"><strong>User:</strong> {{ username }}</div>
+      <div class="summary-item"><strong>Email:</strong> {{ email }}</div>
+      <div class="summary-item"><strong>Gender:</strong> {{ gender }}</div>
+      <div class="summary-item"><strong>Status:</strong> {{ status }}</div>
+      <div class="summary-item"><strong>Notes:</strong> {{ comments }}</div>
+      <button class="submit-btn" style="margin-top:15px;" (click)="submitted = false">Edit Data</button>
+    </div>
+  </div>
+</div>

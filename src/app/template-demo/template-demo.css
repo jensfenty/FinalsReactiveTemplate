@@ -1,0 +1,84 @@
+/* Container with Blurred Background from Internet */
+.form-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.form-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvcmt8ZW58MHx8MHx8fDA%3D');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px); /* Blurs the background photo */
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+.form-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 420px;
+}
+
+h2 { text-align: center; color: #2d3436; margin-bottom: 25px; }
+
+.field-group { margin-bottom: 18px; }
+
+.field-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 5px; color: #636e72; }
+
+.input-box {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+/* THE RED SQUIGGLY / BORDER EFFECT */
+.input-box.is-invalid {
+  border: 1px solid #d63031;
+  background-color: #fff5f5;
+}
+
+/* THE NOTE */
+.error-note {
+  color: #d63031;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 4px;
+  display: block;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0984e3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:disabled { background: #b2bec3; cursor: not-allowed; }
+
+.summary-box {
+  background: #f1f2f6;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #0984e3;
+}
+
+.summary-item { margin-bottom: 8px; font-size: 14px; color: #2d3436; }
