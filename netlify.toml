@@ -1,7 +1,0 @@
-[build]
-  publish = "dist/Angular_Forms"
-  command = "npm run build"
-
-# Optional: set Node environment version if Netlify pick a wrong default
-#[build.environment]
-#  NODE_VERSION = "18"
